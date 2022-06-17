@@ -1,15 +1,18 @@
 const express = require('express');
 
+// Setup router
 const router = express.Router();
 
+// Setting path for controller function
 const homeController = require('../controllers/home_controller');
 
 console.log('router loaded');
 
+// Setting controller function to a route
 router.get('/', homeController.home);
-router.use('/users', require('./users'));
 
-// for any further routes, access from here
-// router.use(/routerName', require('./routerfile'));
+// Route all requests starting with '/action' to action.js file
+router.use('/action', require('./action'));
 
+// Exporting router
 module.exports = router;
